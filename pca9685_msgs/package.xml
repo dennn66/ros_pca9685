@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <name>pca9685_msgs</name>
+  <version>0.0.1</version>
+  <description>The uarm_msgs package</description>
+  <maintainer email="dennn@e1.ru">dennn66</maintainer>
+  <license>BSD</license>
+<url type="UFactory repositories">https://github.com/UFactory</url> 
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>std_msgs</build_depend>
+  <run_depend>std_msgs</run_depend>
+</package>
