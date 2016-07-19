@@ -43,6 +43,7 @@ Run
 ================
 
 ```bash
+    source ~/pca_ws/devel_isolated/setup.sh
     rosrun ros_pca9685 controller_sub
 ```
 
@@ -61,7 +62,8 @@ Test
 =================
 
 ```
-   rostopic pub /servostate_to_controller pca9685_msgs/ServoState '{servo_num: 1, servo_rot: 0.5}' --once
-   rostopic pub /pwmstate_to_controller pca9685_msgs/PwmState '{port_num: 1, on_value: 0, off_value: 400}' --once
+    source ~/pca_ws/devel_isolated/setup.sh
+    rostopic pub /servostate_to_controller pca9685_msgs/ServoState '{servo_num: 1, servo_rot: 0.5}' --once
+    rostopic pub /pwmstate_to_controller pca9685_msgs/PwmState '{port_num: 1, on_value: 0, off_value: 400}' --once
 
 ```
