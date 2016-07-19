@@ -14,11 +14,18 @@ PCA9685 Highlights from [datasheet](http://www.nxp.com/documents/data_sheet/PCA9
 *	**Six hardware address pins allow up to 62 devices on the same bus**
 
 Usage on Raspberry PI
+=====================
+Package tested with [Adafruit 16-Channel 12-bit PWM/Servo Driver] (http://adafruit.com/products/815)
+
+How to configure Raspberry PI described [here] (https://learn.adafruit.com/adafruit-16-channel-servo-driver-with-raspberry-pi/overview)
+
+Circuit
+-------
+![](circuit_cropped.png)
+
 
 Install
 ===============
-
-1. Creating workspace
 
 ```bash
     mkdir -p ~/pca_ws/src
@@ -47,8 +54,8 @@ Publish
 
 Subscribe
 -----------
-* /servostate_to_controller (pca9685_msgs/ServoState): move servo (in range: -Pi .. Pi)
-* /pwmstate_to_controller   (pca9685_msgs/PwmState)  : set pulse margins (0..4096, 0..4096)
+* /servostate_to_controller (pca9685_msgs/ServoState): move servo (angle in range: -Pi .. Pi)
+* /pwmstate_to_controller   (pca9685_msgs/PwmState)  : set pulse margins (on_value: 0..4096, off_value: 0..4096)
 
 Test
 =================
