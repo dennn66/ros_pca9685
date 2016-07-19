@@ -21,18 +21,22 @@ Install
 1. Creating workspace
 
 ```bash
-    $ mkdir -p ~/pca_ws/src
-    $ cd ~/pca_ws/src
-    $ git clone https://github.com/dennn66/ros_pca9685
-    $ 
-    $ cd ~/pca_ws
-    $ catkin_make_isolated
+    mkdir -p ~/pca_ws/src
+    cd  ~/pca_ws
+    catkin_init_workspace
+    cd ~/pca_ws/src
+    git clone https://github.com/dennn66/ros_pca9685
+    cd ~/pca_ws/src/ros_pca9685/ros_pca9685/src/lib/
+    git clone https://github.com/TeraHz/I2C
+    git clone https://github.com/TeraHz/PCA9685
+    cd ~/pca_ws
+    catkin_make_isolated
 ```
 Run
 ================
 
 ```bash
-    $ rosrun ros_pca9685 controller_sub
+    rosrun ros_pca9685 controller_sub
 ```
 
 Pub/Sub
@@ -43,14 +47,14 @@ Publish
 
 Subscribe
 -----------
-* /servostate_to_controller (pca9685_msgs/ServoState): move servo (range: -Pi .. Pi)
+* /servostate_to_controller (pca9685_msgs/ServoState): move servo (in range: -Pi .. Pi)
 * /pwmstate_to_controller   (pca9685_msgs/PwmState)  : set pulse margins (0..4096, 0..4096)
 
 Test
 =================
 
 ```
-   $ rostopic pub /servostate_to_controller pca9685_msgs/ServoState '{servo_num: 1, servo_rot: 0.5}' --once
-   $ rostopic pub /pwmstate_to_controller pca9685_msgs/PwmState '{port_num: 1, on_value: 0, off_value: 400}' --once
+   rostopic pub /servostate_to_controller pca9685_msgs/ServoState '{servo_num: 1, servo_rot: 0.5}' --once
+   rostopic pub /pwmstate_to_controller pca9685_msgs/PwmState '{port_num: 1, on_value: 0, off_value: 400}' --once
 
 ```
