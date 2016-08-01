@@ -8,6 +8,12 @@
 #define SERVO_MAX_PULSE 600
 #define SERVO_PULSE_RANGE 4096
 
+#define D150A_SERVO_MIN_PUL     150
+#define D150A_SERVO_MAX_PUL     600
+#define D009A_SERVO_MIN_PUL     200
+#define D009A_SERVO_MAX_PUL     700
+
+
 #include <ros/ros.h>
 #include <pca9685_msgs/ServoState.h>
 #include <pca9685_msgs/PwmState.h>
@@ -23,7 +29,7 @@ class Controller {
 		ros::NodeHandle node;
 		PCA9685 *controller;
 
-		double joint_lower_limit, joint_upper_limit, limit_coef;
+		double joint_lower_limit, joint_upper_limit, d009a_limit_coef, d150a_limit_coef;
 		ros::Subscriber sub_servo;
                 ros::Subscriber sub_pwm;
 

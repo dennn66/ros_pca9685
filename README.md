@@ -43,7 +43,6 @@ Run
 ================
 
 ```bash
-    source ~/pca_ws/devel_isolated/setup.sh
     rosrun ros_pca9685 controller_sub
 ```
 
@@ -55,15 +54,38 @@ Publish
 
 Subscribe
 -----------
-* /servostate_to_controller (pca9685_msgs/ServoState): move servo (angle in range: -Pi .. Pi)
-* /pwmstate_to_controller   (pca9685_msgs/PwmState)  : set pulse margins (on_value: 0..4096, off_value: 0..4096)
+* /pca9685/servostate_to_controller (pca9685_msgs/ServoState): move servo (angle in range: -Pi .. Pi)
+* /pca9685/pwmstate_to_controller   (pca9685_msgs/PwmState)  : set pulse margins (on_value: 0..4096, off_value: 0..4096)
 
 Test
 =================
 
 ```
-    source ~/pca_ws/devel_isolated/setup.sh
-    rostopic pub /servostate_to_controller pca9685_msgs/ServoState '{servo_num: 1, servo_rot: 0.5}' --once
-    rostopic pub /pwmstate_to_controller pca9685_msgs/PwmState '{port_num: 1, on_value: 0, off_value: 400}' --once
+   rostopic pub  /pca9685/servostate_to_controller pca9685_msgs/ServoState '{port_num: 1, servo_rot: 0.5, servo_type: 2}' --once
+   rostopic pub  /pca9685/pwmstate_to_controller pca9685_msgs/PwmState '{port_num: 1, on_value: 0, off_value: 400}' --once
 
 ```
+Turn off servos
+=================
+
+Stop all servos:
+```
+rostopic pub /pca9685/servostate_to_controller pca9685_msgs/ServoState '{port_num: 0, servo_rot: 0.0, servo_type: 0}' --once
+
+```
+
+Stop servo:
+
+```
+rostopic pub /pca9685/servostate_to_controller pca9685_msgs/ServoState '{port_num: 1, servo_rot: 0.0, servo_type: 0}' --once
+
+```
+
+or
+
+```
+  rostopic pub  /pca9685/pwmstate_to_controller pca9685_msgs/PwmState '{port_num: 1, on_value: 0, off_value: 0}' --once
+
+```
+
+
